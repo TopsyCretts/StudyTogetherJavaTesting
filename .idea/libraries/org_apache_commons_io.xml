@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="org.apache.commons.io">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../../Program Files/Java/org.apache.commons.io.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../Program Files/Java/jsoup-1.16.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../Program Files/Java/httpclient-4.5.10.jar!/" />
+      <root url="file://$PROJECT_DIR$/../../../../Program Files/Java" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/../../../../Program Files/Java" recursive="false" />
+  </library>
+</component>

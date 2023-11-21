@@ -1,0 +1,362 @@
+<html>
+ <head>
+  <script language="JavaScript">
+function deleteMess(idmess,textdel) {
+	var ret = confirm(textdel+"\nУдалить сообщение? ");
+	if (ret) { //alert("Удаляем "+idef);
+  	  location = "/WPROG/DOC/messk_upd.php?delmess="+idmess;
+	}
+	return false;
+}
+</script>
+  <link rel="shortcut icon" href="/WPROG/favicon.png" type="image/png">
+  <title>Корпоративный портал ЯГТУ</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link href="/WPROG/includesCSS/ystu3_screen.css" rel="stylesheet" type="text/css" media="screen, projection">
+  <link href="/WPROG/includesCSS/ystu3_print.css" rel="stylesheet" type="text/css" media="print">
+  <script type="text/javascript" src="/WPROG/includesCSS/cufon-yui.js"></script>
+  <script type="text/javascript" src="/WPROG/includesCSS/cufon-beausans-light.font.js"></script>
+  <script type="text/javascript">
+			Cufon.replace('h1');
+			Cufon.replace('h2');
+		</script>
+  <script type="text/javascript" src="/WPROG/includesCSS/jquery.js"></script>
+  <script type="text/javascript" src="/WPROG/includesCSS/ystu3.js"></script>
+  <link rel="stylesheet" type="text/css" href="/WPROG/includesCSS/box1.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ </head>
+ <body>
+  <div class="WidthLimiter">
+   <div class="Content">
+    <div class="ContentHeader">
+     <div class="Logo">
+      <a href="http://www.ystu.ru/"><img src="/WPROG/I/ystu_logo2018.jpg" alt=""></a>
+     </div>
+     <div class="MainMenuArea">
+      <div class="MainMenuContent">
+       <b class="TLCorner"></b><b class="TRCorner"></b>
+       <ul>
+        <lil>
+         <a href="/WPROG">&gt;</a>Корпоративный портал ЯГТУ
+        </lil><lir>
+         <a href="/WPROG/exit_ses.php">Выход</a>
+        </lir><lir>
+         Борисов Глеб Дмитриевич (borisovgd.22) ХТХ-29
+        </lir><lim>
+         Добрый вечер!
+        </lim>
+       </ul><b class="BLCorner"></b><b class="BRCorner"></b>
+      </div>
+     </div>
+    </div><!-- ContentHeader -->
+    <script type="text/javascript">function showO365(){$(".box1").fadeIn(3000).delay(60000).fadeOut(3000)}</script>
+    <div class="LeftColumn">
+     <div class="PaddingBorder">
+      <div class="SideMenuArea">
+       <h3><b class="TLCorner"></b><b class="TRCorner"></b><a href="/WPROG/main.php">Главная страница<b class="ActiveArrow"></b></a><b class="BLCorner"></b><b class="BRCorner"></b></h3>
+       <p></p>
+       <h3><b class="TLCorner"></b><b class="TRCorner"></b>Список студентов по группам<b class="BLCorner"></b><b class="BRCorner"></b></h3>
+       <p></p>
+       <h3><b class="TLCorner"></b><b class="TRCorner"></b><a href="/WPROG/rasp/raspz.php">Расписание <b class="ActiveArrow"></b></a><b class="BLCorner"></b><b class="BRCorner"></b></h3>
+       <p></p>
+       <h3><b class="TLCorner"></b><b class="TRCorner"></b>Мониторинг ЯГТУ<b class="BLCorner"></b><b class="BRCorner"></b></h3>
+       <p></p>
+       <h3><b class="TLCorner"></b><b class="TRCorner"></b>Аккредитация ЯГТУ<b class="BLCorner"></b><b class="BRCorner"></b></h3>
+       <p></p>
+       <h3 class="Current"><b class="TLCorner"></b><b class="TRCorner"></b><a href="/WPROG/lk/lkstud.php">Личный кабинет студента<b class="ActiveArrow"></b></a><b class="BLCorner"></b><b class="BRCorner"></b></h3>
+       <p></p>
+      </div>
+     </div>
+    </div><!-- LeftColumn -->
+    <div class="RightContentColumn">
+     <div class="NewsPaddingBorder">
+      <div class="NewsLeftColumn">
+       <div class="Content">
+        <link rel="stylesheet" type="text/css" href="bluebuttons.css">
+        <script type="text/javascript" language="JavaScript">
+function PrintObh(){
+ //alert("Обходной!"); 
+  var tsea = '';
+  var obtext=document.getElementById('idobh').innerHTML;
+  //alert(obtext);
+  /*var p4=obtext.indexOf('Воинский учет -');
+  //alert(p4);
+  if (p4>0) {
+   tsea = prompt("Введите номер документа снятия с учета", '');
+   obtext=obtext.replace('Воинский учет -','Воинский учет - '.concat(tsea));
+  }*/
+  var mywindow = window.open('', 'Obhodnoy',"left=100,top=100,width=460,height=460,resizable=yes,location=false");
+	mywindow.document.write('<html><head><title>Обходной</title>');
+    mywindow.document.write('<link href="/WPROG/LK/NoPrint.css" rel="stylesheet" type="text/css" media="print" />');
+	mywindow.document.write('</head><body >');
+	mywindow.document.write('<table style="border-collapse: collapse; border: 1px solid black; margin: 20px;" >');
+	mywindow.document.write('<tr><td style="padding: 10px 10px 10px 10px;" >');
+	mywindow.document.write('<h1> Электронный обходной </h1>');
+    mywindow.document.write(obtext); //document.getElementById('idobh').innerHTML);
+	mywindow.document.write('<br></td></tr></table><center> ');
+	//mywindow.document.write('<br>');
+	mywindow.document.write('<div class="NoPrint">');
+	mywindow.document.write('<input type="submit" onclick="javascript:window.print(); return false;" style="font-size: 14pt;" value="Печать" title="Печать обходного" />');
+	mywindow.document.write('</div>');
+	mywindow.document.write('</center></body></html>');
+	mywindow.document.close(); // necessary for IE >= 10   <img src="print.jpg">
+	mywindow.focus(); // necessary for IE >= 10
+	//mywindow.print();
+	//mywindow.close();
+//return true;
+}
+</script>
+        <h1>Борисов Глеб Дмитриевич</h1>
+        <table width="700px" border="0">
+         <tbody>
+          <tr>
+           <td width="145px"><img src="/wprog/out/" hspace="3" height="190" width="140"></td>
+           <td align="left" valign="top">
+            <table border="0">
+             <tbody>
+              <tr>
+               <td colspan="2" align="left">
+                <div align="right"></div>Информация по обучению:</td>
+              </tr>
+              <tr>
+               <td align="right"><b>Статус: </b></td>
+               <td>"Студенты"</td>
+              </tr>
+              <tr>
+               <td align="right"><b>Факультет: </b></td>
+               <td>Институт химии и химической технологии</td>
+              </tr>
+              <tr>
+               <td align="right"><b>Группа: </b></td>
+               <td>ХТХ-29</td>
+              </tr>
+              <tr>
+               <td align="right"><b>Направление: </b></td>
+               <td>04.05.01 - Фундаментальная и прикладная химия</td>
+              </tr>
+              <tr>
+               <td align="right"><b>Профиль: </b></td>
+               <td>Фармацевтическая химия</td>
+              </tr>
+             </tbody>
+            </table></td>
+          </tr>
+         </tbody>
+        </table>
+        <table width="700px" border="0">
+         <tbody>
+          <tr>
+           <td><a href="#" class="bluebut" onclick="document.getElementById('parent_popup_click2').style.display='block'; return false;"><br>
+             Общая информация</a></td>
+           <td><a href="/WPROG/lk/lkstud_up.php" width="40" class="bluebut">Учебный план, рабочие программы</a></td>
+           <td><a href="/WPROG/lk/lkstud_oc.php" class="bluebut"><br>
+             Оценки</a></td>
+           <td><a href="/WPROG/lk/lkstud_pf.php" class="bluebut"><br>
+             Портфолио</a></td>
+           <td><a href="/WPROG/lk/lkorder.php" class="bluebut"><br>
+             М о и<br>
+              з а я в к и</a></td>
+           <td><a href="/WPROG/lk/lkcovid.php" class="bluebut"><br>
+             QR <br><font size="-1">Сертификаты</font></a></td>
+          </tr>
+         </tbody>
+        </table>
+        <link rel="stylesheet" type="text/css" href="edit.css">
+        <div id="parent_popup_click2" class="parent_popup_click">
+         <div class="popup_click">
+          <h2>Общие сведения</h2><a class="close" title="Закрыть" onclick="document.getElementById('parent_popup_click2').style.display='none';">X</a>
+          <table>
+           <tbody>
+            <tr>
+             <th align="right" class="lable">Источник финансирования:</th>
+             <td class="input">Бюджет</td>
+            </tr>
+            <tr>
+             <th align="right" class="lable">Квалификация:</th>
+             <td>Специалист</td>
+            </tr>
+            <tr>
+             <th align="right" class="lable">Форма обучения:</th>
+             <td>очная</td>
+            </tr>
+            <tr>
+             <th align="right" class="lable">Дата рождения:</th>
+             <td>29.11.2003</td>
+            </tr>
+            <tr>
+             <th align="right" class="lable">Адрес регистрации:</th>
+             <td><font size="-1">, 162620, Вологодская обл, , Череповец г, , Центральная ул, 19, , 75</font></td>
+            </tr>
+            <tr>
+             <th align="right" class="lable">E-mail:</th>
+             <td><font size="-1">www.gleb.borisov.2003@mail.ru borisovgd.22@edu.ystu.ru</font></td>
+            </tr>
+            <tr>
+             <th align="right" class="lable">Тел:</th>
+             <td><font size="-1">(900) 5490591 </font></td>
+            </tr>
+            <tr>
+             <th align="right" class="lable">Информация для<br>
+              электронного обходного:</th>
+             <td><font size="-1">Библиотека - выдано 18 кн.<br>
+               Бухгалтерия - задолженностей нет<br>
+               Общежитие - не проживал, задолженностей нет<br>
+               Воинский учет - Не снят (долг)<br></font></td>
+            </tr>
+            <tr>
+             <td align="right" class="lable"><font size="-1">Читательский билет №:<br>
+               login:</font></td>
+             <td><font size="-1">D6047D8E05 <br>
+               borisovgd.22 </font></td>
+            </tr>
+           </tbody>
+          </table>
+         </div>
+        </div>
+        <br>
+        <div id="idobh" hidden <br>
+         <b>БОРИСОВ ГЛЕБ ДМИТРИЕВИЧ</b>
+         <br>
+         <br>
+         Студент группы <b>ХТХ-29</b>
+         <br>
+         Библиотека - выдано 18 кн.
+         <br>
+         Бухгалтерия - задолженностей нет
+         <br>
+         Общежитие - не проживал, задолженностей нет
+         <br>
+         Воинский учет - Не снят (долг)
+         <br>
+         <br>
+         На 21.11.2023 задолженности есть.&nbsp;&nbsp;&nbsp; <font size="+3" color="red"><b>ДОЛГ</b></font>
+         <br>
+         <br>
+         <br>
+         <br>
+         Студент&nbsp;&nbsp; ___________________ &nbsp;&nbsp;Г.Д. Борисов 
+         <br>
+         <br>
+         Сотрудник &nbsp;&nbsp; ________________ &nbsp;&nbsp;Г.Д. Борисов
+        </div>
+        <table border="0">
+         <tbody>
+          <tr>
+           <td align="left"><a href="#bott" onclick="showO365();"><img src="/WPROG/I/o365.png" alt="8+" title="Облачный офис 365..."></a></td>
+           <td width="1%"></td>
+           <td align="right" valign="center"><a href="https://moodle.ystu.ru"><img src="/WPROG/I/online12.jpg" alt="8+" title="Moodle - Онлайн курсы обучения ЯГТУ"></a></td>
+           <td width="3%"></td>
+           <td align="right" valign="center"><a href="http://www.ystu.ru:39445/marc/ebs.php"><img src="/WPROG/I/books1.png" alt="8+" title="Библиотечные ресурсы НТБ ЯГТУ"></a></td>
+          </tr>
+         </tbody>
+        </table>
+        <br>
+        <h2>
+         <center>
+          Объявления для студентов
+         </center></h2>
+        <script type="text/javascript"> function displ(ddd) { 
+  if (document.getElementById(ddd).style.display == 'none') { 
+	document.getElementById(ddd).style.display = 'block'
+  } else {	document.getElementById(ddd).style.display = 'none'  }
+} </script><font size="+0.3">
+         <ul>
+          <li>29.04.2022 - &nbsp; По воинскому учету. Отсрочка. Важно для студентов всех курсов. <a href="javascript: displ('var1')"> <font size="-1">&nbsp;читать далее...</font></a>
+           <div id="var1" class="box2" style="display: none; ">
+            <pre style="white-space: pre-wrap;"><p>Для получения отсрочки от призыва в армию:</p>
+Гражданам, поступившим на первый курс очного обучения, в соответствии с законодательством,  необходимо по 15 сентября  встать на воинский учет в военно-учетном столе университета (кабинет Г-303, тел. 44-07-00). Предъявить удостоверение гражданина, подлежащего призыву и паспорт. Граждане (мужского и женского пола), имеющие военный билет (по состоянию здоровья или отслужившие срочную службу), также ОБЯЗАНЫ встать на воинский учет в военно-учетном столе университета (кабинет Г-303).
+<br>Иногородним, перед посещением военно-учетного стола ЯГТУ (Г-303), необходимо встать на воинский учет в военном комиссариате по месту пребывания (в г. Ярославль):
+1) ВК Кировского, Фрунзенского, Красноперекопского районов г. Ярославль – а) Б.Федоровская, д. 38А, тел. 21-44-94 (для призывников); б) ул. З. Космо демьянской, д. 4А, тел. 30-43-61 (запас) – для проживающих в общежитиях ЯГТУ.
+2) ВК Дзержинского и Ленинского районов г. Ярославль – ул. Труфанова, д. 29, кор. 2, тел. 51-10-55;
+3) ВК Заволжского района г. Ярославль и Ярославского района ЯО – Тверицкая наб., д. 14А, тел. 24-04-78;
+
+<b>Выпускникам</b>
+В соответствии со ст. 10 Федерального закона от 28.03.1998 N 53-ФЗ "О воинской обязанности и военной службе" гражданин при переезде на новое место жительства и (или) место пребывания, в том числе не подтвержденные регистрацией по месту жительства и (или) месту пребывания, либо выезде из Российской Федерации на срок более шести месяцев или въезде в Российскую Федерацию ОБЯЗАН ЯВИТЬСЯ в двухнедельный срок в военный комиссариат для постановки на воинский учет, снятия с воинского учета и внесения изменений в документы воинского учета.
+</pre><a href="javascript: displ('var1')"> <font size="-1">...скрыть.</font></a>
+           </div><br></li>
+         </ul><br>
+         <table border="0" width="100%">
+          <tbody>
+           <tr>
+            <td><font size="-1"><i><a href="/WPROG/lk/lk_abook.php" title="Электронные адрес апреподавателей">Электронная адресная книга</a></i></font></td>
+            <td align="center"><font size="-1"><i> <a href="/wprog/rasp/raspz.php?raspz=6999975320&amp;idgr=61421987210&amp;lek=0" title="В расписание группы!">Расписание группы ХТХ-29</a>&nbsp;&nbsp;</i></font></td>
+            <td align="right"><font size="-1"><i><a href="/WPROG/auth_chp.php" title="Изменить пароль для почты, корпоративного портала, офиса 365...">Изменить пароль</a></i></font></td>
+           </tr>
+          </tbody>
+         </table>
+         <div class="box1">
+          <center>
+           <h3>Офис 365</h3> Вход: <a href="http://portal.office.com" target="_blank">portal.office.com</a> Ваша учетная запись: <i><font color="blue"> borisovgd.22@edu.ystu.ru </font></i><font size="-1" face="arial, sans-serif"></font>
+          </center><font size="-1" face="arial, sans-serif"> <br>
+           <ul>
+            <li>Все студенты и сотрудники имеют /могут получить/ доступ к облачному Офису 365!</li>
+            <li>Облачный Офис 365 позволяет пользоваться такими продуктами Microsoft как Word, Excel, Powerpoint, а также почтой @edu.ystu.ru и др. через браузер интернет.</li>
+            <li>Каждому студенту выдается корпоративный почтовый ящик в домене @edu.ystu.ru. Логины и пароли выдаются студентам при поступлении. Также их можно получить самостоятельно на сайте Корпоративного портала ЯГТУ путем ввода номера читательского билета и номера паспорта (внизу ссылка "получить пароль").</li>
+            <li>Сотрудники и студенты могут подключить Офис 365 самостоятельно - путем ввода нового пароля и подачи "Заявки на подключение Офис 365" в личном кабинете.</li>
+            <li>Логины и пароли используются для доступ к личному кабинету, корпоративному порталу ЯГТУ, системе дистанционного обучения Moodle, а также для доступа в облако Офис 365.</li>
+            <li>Вход в облачный офис осуществляется через интернет браузер на сайте <a href="http://portal.office.com" target="_blank">portal.office.com</a>. <br>
+             Необходимо ввести учетные данные типа login@edu.ystu.ru и пароль, где login - логин студента/сотрудника.</li>
+            <li>Краткие ссылки для доступа приведены в <a href="http://edu.ystu.ru/" target="_blank">http://edu.ystu.ru/</a> <a name="bott"></a></li>
+           </ul></font>
+         </div><br>
+         <script language="JavaScript">
+function funO365prep() {
+	var ret = confirm("Подать заявку на подключение к облачному Офису 365?");
+	if (ret) { //alert("Подаем заявку... ");
+	  location = "/WPROG/LK/lksotr_efupd.php?o365prep=1";
+	}
+	return false;
+}
+</script></font>
+       </div><font size="+0.3"> </font>
+      </div><font size="+0.3"> </font>
+     </div><font size="+0.3"> </font>
+    </div><!-- RightContentColumn --><font size="+0.3">
+     <div class="Last">
+      <!-- -->
+     </div></font>
+   </div><font size="+0.3">
+    <div class="BottomFooter">
+     <div class="Content">
+      <div class="Copyright">
+       <table width="100%">
+        <tbody>
+         <tr>
+          <td><font size="-1">
+            <p class="Lightgray">© Ярославский государственный технический университет</p></font></td>
+          <td width="100"><span id="sputnik-informer"></span></td>
+         </tr>
+        </tbody>
+       </table>
+      </div>
+     </div>
+    </div><!-- BottomFooter --> </font>
+  </div><!-- WidthLimiter --><font size="+0.3"> <!-- sputnik-analytics -->
+   <script type="text/javascript">
+       (function(d, t, p) {
+           var j = d.createElement(t); j.async = true; j.type = "text/javascript";
+           j.src = ("https:" == p ? "https:" : "http:") + "//stat.sputnik.ru/cnt.js";
+           var s = d.getElementsByTagName(t)[0]; s.parentNode.insertBefore(j, s);
+       })(document, "script", document.location.protocol);
+</script><!--2022.12.30 Yandex.Metrika counter -->
+   <script type="text/javascript">
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();
+   for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+   k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(91904138, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true
+   });
+</script>
+   <noscript>
+    <div>
+     <img src="https://mc.yandex.ru/watch/91904138" style="position:absolute; left:-9999px;" alt="">
+    </div>
+   </noscript><!-- /Yandex.Metrika counter --> </font>
+ </body>
+</html>
