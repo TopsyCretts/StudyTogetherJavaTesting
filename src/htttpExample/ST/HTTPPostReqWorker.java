@@ -39,13 +39,13 @@ public class HTTPPostReqWorker implements Runnable {
         urlParameters.add(new BasicNameValuePair("password", password));
         try {
             postRequest.setEntity(new UrlEncodedFormEntity(urlParameters));
-            convertingResponseToDocument(postRequest, ResponseTypes.POST_AUTH);
+            convertingResponseToDocument(postRequest, RequestTypes.POST_AUTH);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    private void convertingResponseToDocument(HttpPost postRequest, ResponseTypes responseType) throws IOException {
+    private void convertingResponseToDocument(HttpPost postRequest, RequestTypes responseType) throws IOException {
         try (CloseableHttpResponse response = (CloseableHttpResponse)
                 clientWorker.getHttpClient().execute(postRequest)) {
             Document responseDoc = parsingResponse(response);

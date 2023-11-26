@@ -11,14 +11,13 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 
 public class HTTPGetReqWorker implements Runnable {
     private final HTTPClientWorker clientWorker;
     private final String url;
-    private final ResponseTypes responseType;
+    private final RequestTypes responseType;
 
-    public HTTPGetReqWorker(HTTPClientWorker clientWorker, String url, ResponseTypes responseType) {
+    public HTTPGetReqWorker(HTTPClientWorker clientWorker, String url, RequestTypes responseType) {
         this.clientWorker = clientWorker;
         this.url = url;
         this.responseType = responseType;
@@ -49,7 +48,7 @@ public class HTTPGetReqWorker implements Runnable {
         return getRequest;
     }
 
-    private Document parsingResponse(CloseableHttpResponse response, ResponseTypes responseType) {
+    private Document parsingResponse(CloseableHttpResponse response, RequestTypes responseType) {
         HttpEntity responseEntity = response.getEntity();
         if (responseEntity != null) {
             try {

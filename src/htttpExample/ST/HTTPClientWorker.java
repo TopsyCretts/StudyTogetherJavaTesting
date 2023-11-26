@@ -3,9 +3,9 @@ package htttpExample.ST;
 import org.apache.http.client.HttpClient;
 import org.jsoup.nodes.Document;
 
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
 /**
  * This class uses for working with HTTP requests and responses with client instance.
@@ -15,10 +15,19 @@ public class HTTPClientWorker {
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private String codeYSTU;
     private String groupScheduleUrl;
-    private Document responseDoc;
+    private Data data;
 
-    public HTTPClientWorker(HttpClient client) {
-        this.httpClient = client;
+    public Data getData() {
+        return data;
+    }
+
+    public void setData(Data data) {
+        this.data = data;
+    }
+
+    public HTTPClientWorker(HttpClient httpClient, Data data) {
+        this.httpClient = httpClient;
+        this.data = data;
     }
 
     public HttpClient getHttpClient() {
@@ -27,9 +36,6 @@ public class HTTPClientWorker {
 
     public ExecutorService getExecutor() {
         return executor;
-    }
-    public void setResponseDoc(Document responseDoc) {
-        this.responseDoc = responseDoc;
     }
 
     public String getCodeYSTU() {
@@ -48,7 +54,7 @@ public class HTTPClientWorker {
         this.groupScheduleUrl = groupScheduleUrl;
     }
 
-    public void getRequest(String url, ResponseTypes responseType) {
+    public void getRequest(String url, RequestTypes responseType) {
         executor.submit(new HTTPGetReqWorker(this, url, responseType));
     }
 

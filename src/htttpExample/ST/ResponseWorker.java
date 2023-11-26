@@ -5,11 +5,11 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 public class ResponseWorker implements Runnable {
-    private final ResponseTypes responseType;
+    private final RequestTypes responseType;
     private final Document documentResponse;
     private final HTTPClientWorker clientWorker;
 
-    public ResponseWorker(HTTPClientWorker clientWorker, Document documentResponse, ResponseTypes responseType) {
+    public ResponseWorker(HTTPClientWorker clientWorker, Document documentResponse, RequestTypes responseType) {
         this.responseType = responseType;
         this.documentResponse = documentResponse;
         this.clientWorker = clientWorker;
@@ -33,7 +33,10 @@ public class ResponseWorker implements Runnable {
         Elements elements = responseDocument.getElementsByAttributeValue("name", "codeYSTU");
         for (Element element : elements) {
             String codeYSTU = element.attr("value");
-            clientWorker.setCodeYSTU(codeYSTU);
+            synchronized (clientWorker.getData()){
+                clientWorker.getData().setCodeYSTU(codeYSTU);
+                clientWorker.getData().notifyAll();
+            }
         }
     }
 
@@ -52,12 +55,20 @@ public class ResponseWorker implements Runnable {
         Elements elements = responseDocument.getElementsByAttributeValue("title", "В расписание группы!");
         for (Element element : elements){
            String groupScheduleUrl = ("https://www.ystu.ru"+element.attr("href"));
-           clientWorker.setGroupScheduleUrl(groupScheduleUrl);
-           System.out.println(groupScheduleUrl);
+           synchronized (clientWorker.getData()){
+               clientWorker.getData().setScheduleUrl(groupScheduleUrl);
+               clientWorker.getData().notifyAll();
+           }
+
         }
 
     }
     private void getGrSchResponse(Document responseDocument){
+        Elements elements = responseDocument.getAllElements();
+        synchronized (clientWorker.getData()){
+            clientWorker.getData().setIsScheduleLoaded("yep");
+            clientWorker.getData().notifyAll();
+        }
 
     }
 }
