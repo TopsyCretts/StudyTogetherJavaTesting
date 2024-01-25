@@ -120,7 +120,6 @@ public class HttpClientExample {
 
             if (entity != null) {
                 // return it as a String
-                //result = EntityUtils.toString(entity);
                 result = IOUtils.toString(entity.getContent(), "cp1251");
                 String res = new String(result.getBytes("UTF-8"));
                 BufferedWriter writer = new BufferedWriter(new FileWriter("main"));
@@ -162,12 +161,5 @@ public class HttpClientExample {
         }
 
     }
-    public static void getData (String path) throws IOException {
-        Document document = Jsoup.parse(new File(path));
 
-        Elements element = document.getElementsByTag("title");
-        System.out.println(element);
-
-
-    }
 }

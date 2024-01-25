@@ -13,45 +13,21 @@ import java.util.concurrent.Executors;
 public class HTTPClientWorker {
     private final HttpClient httpClient;
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
-    private String codeYSTU;
-    private String groupScheduleUrl;
-    private Data data;
+    private final Data data;
 
     public Data getData() {
         return data;
     }
-
-    public void setData(Data data) {
-        this.data = data;
-    }
-
     public HTTPClientWorker(HttpClient httpClient, Data data) {
         this.httpClient = httpClient;
         this.data = data;
     }
-
     public HttpClient getHttpClient() {
         return httpClient;
     }
 
     public ExecutorService getExecutor() {
         return executor;
-    }
-
-    public String getCodeYSTU() {
-        return codeYSTU;
-    }
-
-    public void setCodeYSTU(String codeYSTU) {
-        this.codeYSTU = codeYSTU;
-    }
-
-    public String getGroupScheduleUrl() {
-        return groupScheduleUrl;
-    }
-
-    public void setGroupScheduleUrl(String groupScheduleUrl) {
-        this.groupScheduleUrl = groupScheduleUrl;
     }
 
     public void getRequest(String url, RequestTypes responseType) {

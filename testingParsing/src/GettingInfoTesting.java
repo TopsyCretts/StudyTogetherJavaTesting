@@ -1,3 +1,5 @@
+import parsingComponents.ScheduleData;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -13,12 +15,10 @@ public class GettingInfoTesting {
             ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(data));
             scheduleData = (ScheduleData) inputStream.readObject();
             inputStream.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
+        } catch (IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-        LocalDate today = LocalDate.of(2023,11,27);
+        LocalDate today = LocalDate.of(2024,2,12);
         ScheduleData.Week currentWeek = null;
         for (ScheduleData.Week week : scheduleData.getWeeks()) {
             LocalDate start = week.getStart();

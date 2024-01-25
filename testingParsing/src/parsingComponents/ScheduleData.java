@@ -1,3 +1,5 @@
+package parsingComponents;
+
 import java.io.Serializable;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -33,7 +35,7 @@ public class ScheduleData implements Serializable {
         this.days = days;
     }
 
-    class Day implements Serializable{
+    public class Day implements Serializable{
 
         DayOfWeek dayName;
         List<Line> lines;
@@ -54,7 +56,7 @@ public class ScheduleData implements Serializable {
             this.lines = lines;
         }
 
-        class Line implements Serializable{
+        public class Line implements Serializable{
 
             private String numberOfLesson;
             private LessonInfo lessonInfo;
@@ -76,7 +78,7 @@ public class ScheduleData implements Serializable {
                 this.numberOfLesson = numberOfLesson;
             }
 
-            class LessonInfo implements Serializable{
+            public class LessonInfo implements Serializable{
                 private String lessonTime;
                 private List<Week> weeks = new ArrayList<>();
                 private String discipline;
@@ -136,7 +138,7 @@ public class ScheduleData implements Serializable {
         }
     }
 
-    class Week implements Serializable{
+    public class Week implements Serializable{
         private String weekNumber;
         private WeekType weekType;
         private LocalDate start;
