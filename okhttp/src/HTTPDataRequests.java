@@ -1,7 +1,5 @@
-package htttpExample.ST;
-
-public class Data {
-    private String codeYSTU, scheduleUrl, isScheduleLoaded;
+public class HTTPDataRequests {
+    private String codeYSTU, scheduleUrl, isScheduleLoaded, isLogged;
 
     public String getCodeYSTU() {
         return codeYSTU;
@@ -25,5 +23,13 @@ public class Data {
 
     public void setIsScheduleLoaded(String isScheduleLoaded) {
         this.isScheduleLoaded = isScheduleLoaded;
+    }
+
+    public String getIsLogged() {
+        return isLogged;
+    }
+
+    public void setIsLogged(String isLogged) {
+        this.isLogged = isLogged;
     }
 }

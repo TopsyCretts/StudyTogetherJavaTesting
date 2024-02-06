@@ -1,15 +1,13 @@
-package htttpExample.ST;
-
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-public class ResponseWorker implements Runnable {
+public class ResponseHandler implements Runnable {
     private final RequestTypes responseType;
     private final Document documentResponse;
-    private final HTTPClientWorker clientWorker;
+    private final HTTPClientHandler clientWorker;
 
-    public ResponseWorker(HTTPClientWorker clientWorker, Document documentResponse, RequestTypes responseType) {
+    public ResponseHandler(HTTPClientHandler clientWorker, Document documentResponse, RequestTypes responseType) {
         this.responseType = responseType;
         this.documentResponse = documentResponse;
         this.clientWorker = clientWorker;
@@ -19,13 +17,9 @@ public class ResponseWorker implements Runnable {
     public void run() {
         switch (responseType) {
             case GET_AUTH -> getAuthResponse(documentResponse);
-            case GET_CMN_SCHEDULE -> getCmnSchedResponse(documentResponse);
             case POST_AUTH -> postAuthResponse(documentResponse);
-            case GET_MAIN -> getMainResponse(documentResponse);
             case GET_LK -> getLkResponse(documentResponse);
-            case GET_GROUP_SCHEDULE -> getGrSchResponse(documentResponse);
-            default -> {
-            }
+
         }
     }
 
@@ -45,7 +39,13 @@ public class ResponseWorker implements Runnable {
     }
 
     private void postAuthResponse(Document responseDocument) {
-
+        Elements elements = responseDocument.getElementsByTag("title");
+        synchronized (clientWorker.getData()){
+            if (elements.size()>0){
+                clientWorker.getData().setIsLogged("true");
+            } else clientWorker.getData().setIsLogged("false");
+            clientWorker.getData().notifyAll();
+        }
     }
 
     private void getMainResponse(Document responseDocument) {
@@ -64,11 +64,8 @@ public class ResponseWorker implements Runnable {
 
     }
     private void getGrSchResponse(Document responseDocument){
-        Elements elements = responseDocument.getAllElements();
-        synchronized (clientWorker.getData()){
-            clientWorker.getData().setIsScheduleLoaded("yep");
-            clientWorker.getData().notifyAll();
-        }
 
     }
+
+
 }

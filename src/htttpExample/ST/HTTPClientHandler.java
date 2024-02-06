@@ -1,24 +1,21 @@
 package htttpExample.ST;
 
 import org.apache.http.client.HttpClient;
-import org.jsoup.nodes.Document;
 
-import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-/**
- * This class uses for working with HTTP requests and responses with client instance.
- */
-public class HTTPClientWorker {
+
+public class HTTPClientHandler {
     private final HttpClient httpClient;
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
-    private final Data data;
+    private final HTTPDataRequests data;
 
-    public Data getData() {
+
+    public HTTPDataRequests getData() {
         return data;
     }
-    public HTTPClientWorker(HttpClient httpClient, Data data) {
+    public HTTPClientHandler(HttpClient httpClient, HTTPDataRequests data) {
         this.httpClient = httpClient;
         this.data = data;
     }
@@ -31,11 +28,11 @@ public class HTTPClientWorker {
     }
 
     public void getRequest(String url, RequestTypes responseType) {
-        executor.submit(new HTTPGetReqWorker(this, url, responseType));
+        executor.submit(new HTTPGetRequestHandler(this, url, responseType));
     }
 
     public void postRequest(String codeYSTU, String login, String password) {
-        executor.submit(new HTTPPostReqWorker(codeYSTU, login, password, this));
+        executor.submit(new HTTPPostRequestHandler(codeYSTU, login, password, this));
     }
 
 }

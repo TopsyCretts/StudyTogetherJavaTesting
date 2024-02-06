@@ -14,11 +14,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HTTPPostReqWorker implements Runnable {
-    private final HTTPClientWorker clientWorker;
+public class HTTPPostRequestHandler implements Runnable {
+    private final HTTPClientHandler clientWorker;
     private final String codeYSTU, login, password;
 
-    public HTTPPostReqWorker(String codeYSTU, String login, String password, HTTPClientWorker client) {
+    public HTTPPostRequestHandler(String codeYSTU, String login, String password, HTTPClientHandler client) {
         this.clientWorker = client;
         this.codeYSTU = codeYSTU;
         this.login = login;
@@ -49,7 +49,7 @@ public class HTTPPostReqWorker implements Runnable {
         try (CloseableHttpResponse response = (CloseableHttpResponse)
                 clientWorker.getHttpClient().execute(postRequest)) {
             Document responseDoc = parsingResponse(response);
-            clientWorker.getExecutor().submit(new ResponseWorker(clientWorker,responseDoc,responseType));
+            clientWorker.getExecutor().submit(new ResponseHandler(clientWorker,responseDoc,responseType));
         }
     }
 

@@ -11,13 +11,15 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 
-public class HTTPGetReqWorker implements Runnable {
-    private final HTTPClientWorker clientWorker;
+public class HTTPGetRequestHandler implements Runnable {
+    private final HTTPClientHandler clientWorker;
     private final String url;
     private final RequestTypes responseType;
 
-    public HTTPGetReqWorker(HTTPClientWorker clientWorker, String url, RequestTypes responseType) {
+    public HTTPGetRequestHandler(HTTPClientHandler clientWorker, String url, RequestTypes responseType) {
         this.clientWorker = clientWorker;
         this.url = url;
         this.responseType = responseType;
@@ -37,7 +39,7 @@ public class HTTPGetReqWorker implements Runnable {
     private void convertingResponseToDocument(HttpGet getRequest) throws IOException {
         try (CloseableHttpResponse response = (CloseableHttpResponse) clientWorker.getHttpClient().execute(getRequest)) {
             Document responseDoc = parsingResponse(response, responseType);
-            clientWorker.getExecutor().submit(new ResponseWorker(clientWorker,responseDoc,responseType));
+            clientWorker.getExecutor().submit(new ResponseHandler(clientWorker,responseDoc,responseType));
         }
     }
 
@@ -52,7 +54,7 @@ public class HTTPGetReqWorker implements Runnable {
         HttpEntity responseEntity = response.getEntity();
         if (responseEntity != null) {
             try {
-                String responseString = new String((IOUtils.toString(responseEntity.getContent(), "cp1251")).getBytes("UTF-8"));
+                String responseString = new String( (IOUtils.toString(responseEntity.getContent(), "cp1251")).getBytes("UTF-8")) ;
                 Document document = Jsoup.parse(responseString);
                 Elements elements = document.getElementsByAttributeValue("content", "text/html; charset=windows-1251");
                 for (Element element : elements){
